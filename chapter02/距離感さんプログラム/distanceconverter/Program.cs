@@ -17,9 +17,18 @@ static void Main(string[] args)
             Console.WriteLine("_tomか_tofを入力");
             string? arg = Console.ReadLine();
             args[0] = arg;
+
+            Console.WriteLine("表示範囲1を決めてください");
+            string? inputnum = Console.ReadLine();
+            int x = int.Parse(inputnum);
+
+            Console.WriteLine("表示範囲2を決めてください");
+            string? inputnm = Console.ReadLine();
+            int y = int.Parse(inputnm);
+
             if (args[0] == "_tom")
             {
-                printfeetmetalist(1, 10);
+                printfeetmetalist(x, y);
                 //for (int i = 0; i < 10; i++)
                 //{
                 //  double meto = 0.3048;
@@ -27,7 +36,7 @@ static void Main(string[] args)
              }
             else if (args[0] == "_tof")
             {
-                printmetftlist(1, 10);
+                printmetftlist(x, y);
                 //for (int meta = 1; meta <= 10; meta++) {
                 //  double feet = metafeet(meta);
                 //   Console.WriteLine($"{meta}m={feet:o.oooo}ft");
