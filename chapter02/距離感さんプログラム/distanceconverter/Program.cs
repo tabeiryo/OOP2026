@@ -4,31 +4,53 @@ namespace distanceconverter
 {
     internal class Program
     {
-        static  double feetmeta(int ft) {
+        static double feetmeta(int ft)
+        {
             return ft * 0.3048;
         }
-
-        static double metafeet(int meta) {
-            return meta * 1;
-        }
-        static void Main(string[] args)
+        static double metafeet(int meta)
         {
-            if (args.Length < -1 && args[0] == "_tom")
+            return meta / 0.3048;
+        }
+static void Main(string[] args)
+        {
+            Console.WriteLine("_tomか_tofを入力");
+            string? arg = Console.ReadLine();
+            args[0] = arg;
+            if (args[0] == "_tom")
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    double meto = 0.3048;
-                    Console.WriteLine((i + 1) + "ft=" + feetmeta(i + 1) + "m");
-
-                }
+                printfeetmetalist(1, 10);
+                //for (int i = 0; i < 10; i++)
+                //{
+                //  double meto = 0.3048;
+                //Console.WriteLine($"{i}ft={meto:o.oooo}m"}
+             }
+            else if (args[0] == "_tof")
+            {
+                printmetftlist(1, 10);
+                //for (int meta = 1; meta <= 10; meta++) {
+                //  double feet = metafeet(meta);
+                //   Console.WriteLine($"{meta}m={feet:o.oooo}ft");
+                //}
             }
-            else {
-                for (int meta = 1; meta <= 10; meta++) {
-                    double feet = metafeet(meta);
-                    Console.WriteLine($"{meta}m={feet:o.oooo}ft")
-                }
+            else
+                Console.WriteLine("引数エラー");
+        }
+        static void printfeetmetalist(int start, int stop) //ft→m
+        {
+            for (int feet = start; feet <= stop; feet++)
+            {
+                double meta = feetmeta(feet);
+                Console.WriteLine($"{feet}ft={meta:0.0000}m");
             }
-          
+        }
+        static void printmetftlist(int start, int stop) //m→ft
+        {
+            for (int met = start; met <= stop; met++)
+            {
+                double fet = feetmeta(met);
+                Console.WriteLine($"{met}m={fet:0.0000}ft");
+            }
         }
     }
 }
