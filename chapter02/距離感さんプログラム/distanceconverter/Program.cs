@@ -14,11 +14,12 @@ namespace distanceconverter
         }
 static void Main(string[] args)
         {
+
             Console.WriteLine("_tomか_tofを入力");
             string? arg = Console.ReadLine();
             args[0] = arg;
 
-             
+            
             if (args[0] == "_tom")
             {
                 Console.WriteLine("表示範囲1(スタート)を決めてください");
@@ -75,7 +76,7 @@ static void Main(string[] args)
         {
             for (int feet = start; feet <= stop; feet++)
             {
-                double meta = feetmeta(feet);
+                double meta = FeetConverter.tometer(feet);
                 Console.WriteLine($"{feet}ft={meta:0.0000}m");
             }
         }
@@ -83,7 +84,7 @@ static void Main(string[] args)
         {
             for (int met = start; met <= stop; met++)
             {
-                double fet = feetmeta(met);
+                double fet = FeetConverter.Frommetar(met);
                 Console.WriteLine($"{met}m={fet:0.0000}ft");
             }
         }
