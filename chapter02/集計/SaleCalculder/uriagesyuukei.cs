@@ -15,7 +15,7 @@ namespace SaleCalculder
             _sales = ReadSales(string filePath); }
             public IEnumerable<Sale> ReadSales(string filePath)
             {
-               public List<Sale> sales = new List<Sale>();
+               public var Sale sales = new List<Sale>();
                 string[] lines = File.ReadAllLines(filePath);
                 foreach (string line in lines)
                 {
