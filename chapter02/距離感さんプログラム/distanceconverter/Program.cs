@@ -79,14 +79,14 @@ static void Main(string[] args)
                 double meta = FeetConverter.tometer(feet);
                 Console.WriteLine($"{feet}ft={meta:0.0000}m");
             }
-        }
-        static void printmetftlist(int start, int stop) //m→ft
+        }static void printmetftlist(int start, int stop) //m→ft
         {
             for (int met = start; met <= stop; met++)
             {
                 double fet = FeetConverter.Frommetar(met);
                 Console.WriteLine($"{met}m={fet:0.0000}ft");
             }
+        
         }
     }
 }

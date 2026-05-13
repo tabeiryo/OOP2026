@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace distanceconverter
+namespace exiciez2
 {
-    public class FeetConverter
+    public class FeetConverter2
     {
         private const double ra  = 0.3048;
         private const double qa = 0.0254;
