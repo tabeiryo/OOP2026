@@ -17,5 +17,10 @@ namespace exercise01
             ArtistName = artistname;
             Length = length;
         }
+
+        public static implicit operator Song((string? Title, string? ArtistName, int length) v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

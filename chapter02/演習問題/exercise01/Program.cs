@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace exercise01
 {
@@ -6,13 +7,40 @@ namespace exercise01
     {
         static void Main(string[] args)
         {
-            var songs = new Song[] {
-                new Song("letitbe", "THEbeetles",243),
-                new Song("BREigeoverTrionblidwalre", "simon&Gaffunkei", 293),
-                new Song("Gloss Toyo", "Gerpantites", 276),
-                new Song("Honstry", "Sliiy deal", 231),
-                new Song("I Will Alwersloveyou", "Wilitney hongston", 273),
-            };
+            int i = 1;
+            var songs = new Song[i];
+            var str1 = "end";
+            while (true)
+            {
+                Console.WriteLine(i+"曲目");
+                Console.WriteLine();
+                Console.Write("曲名を入力");
+                string Title = Console.ReadLine(); //nyuuryoku
+                if (string.Compare(Title, str1,ignoreCase:true) == 0)
+                {
+                    Console.WriteLine("終了します");
+                    break;
+                }
+                Console.Write("名前を入力");
+                string ArtistName = Console.ReadLine(); //nyuuryoku
+                if (string.Compare(ArtistName, str1, ignoreCase: true) == 0)
+                {
+                    Console.WriteLine("終了します");
+                    break;
+                }
+                Console.Write("時間を入力");
+                string time = Console.ReadLine(); //nyuuryoku
+                if (string.Compare(time, str1, ignoreCase: true) == 0)
+                {
+                    Console.WriteLine("終了します");
+                    break;
+                }
+                int length = int.Parse(time);
+                songs[i] = (Title, ArtistName, length);
+                i++;
+            }
+
+
             PrintSongs(songs);
         }
 
@@ -20,17 +48,11 @@ namespace exercise01
         {
             foreach (var n in songs)
             {
-
-                Console.WriteLine(n.Title + "/" + n.ArtistName + "/" + n.Length / 60 + ":" + n.Length % 60);
+                int j = 1;
+                Console.WriteLine("曲"+j+":"+n.Title + "/" + n.ArtistName + "/" + n.Length / 60 + ":" + n.Length % 60);
             }
         }
 
-        //private static void PrintSongs(object songs)
-        //{
-        //    foreach (var n in songs)
-        //    {
-
-        //    }
-        //}
+        
     }
 }
