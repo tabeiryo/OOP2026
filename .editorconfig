@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# IDE0320: 匿名関数を静的にする
+csharp_prefer_static_anonymous_function = true
