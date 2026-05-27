@@ -29,9 +29,25 @@ namespace secsion04
             Amount = 100
             };
 
-            int? amount = sale ? Amount;
-            Console.WriteLine("売上高:" +amount);
+           // int? amount = sale ? Amount;
+           // Console.WriteLine("売上高:" +amount);
 
+
+
+
+
+            int a = 10;
+            int b = 20;
+            int c = 30;
+            Console.WriteLine("a=" + a + ",b=" + b);
+
+             int cthea = a;
+             a = b;
+             b = cthea;
+             
+
+
+            Console.WriteLine("a=" + a + ",b=" + b);
 
         }
 
