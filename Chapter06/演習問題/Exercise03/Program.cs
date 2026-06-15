@@ -1,5 +1,7 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Tracing;
+using System.Net.WebSockets;
 using System.Text;
 
 namespace Exercise03 {
@@ -43,18 +45,13 @@ namespace Exercise03 {
 
         private static void Exercise3(string text) {
             var words = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var sb = new StringBuilder();
+            var separator = " ";
+            
+              var result =String .Join(separator, words);
 
-            foreach (var word in words)
-            {
-                if (word== "quartz")
-                {
-                    sb.Append(word);
-                }else sb.Append(word + " ");
-
-            }
-            var texte= sb.ToString();
-            Console.WriteLine(texte);
+            result += ".";
+            Console.WriteLine(result);
+             
         }
 
         private static void Exercise4(string text) {
