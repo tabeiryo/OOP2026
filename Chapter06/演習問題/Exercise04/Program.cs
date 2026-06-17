@@ -5,17 +5,9 @@ namespace Exercise04 {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
             var words = line.Split(new[] { "=",";" }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i=0;i<words.Length;i++)
+            for (int i = 0; i < words.Length; i+=2)
             {
-                if (ToJapanese(words[i]).Length != 3)
-                {
-                    Console.WriteLine(ToJapanese(words[i]) + "　:"+ words[i + 1]);
-                }
-                else
-                {
-                    Console.WriteLine(ToJapanese(words[i]) + ":"+ words[i + 1]);
-                }
-                i++;
+                Console.WriteLine(ToJapanese(words[i]) + ":" + words[i + 1]);
             }
         }
 
