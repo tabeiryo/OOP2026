@@ -51,11 +51,13 @@ namespace Exercise01
                     if (item.Length == 2)
                     {
                         string zero = "0";
-                        Console.WriteLine(zero +item);
+                        string zerostr = zero + item;
+                        Console.WriteLine(zerostr);
                     }
                     else if (item.Length == 1) {
                         string zero = "00";
-                        Console.WriteLine(zero + item);
+                        string zerostr = zero + item;
+                        Console.WriteLine(zerostr);
                     }
 
                     
