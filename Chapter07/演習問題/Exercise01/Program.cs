@@ -8,7 +8,7 @@ namespace Exercise01
         static void Main(string[] args)
         {
             int[] numbers = [5,10,17,9,3,21,10,40,21,3,35];
-
+            　
 
             Console.WriteLine("7.1.1");
             Exercise1(numbers);
