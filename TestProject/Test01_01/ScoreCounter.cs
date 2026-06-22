@@ -11,14 +11,20 @@
         private static IEnumerable<Student> ReadScore(string filePath) {
             var sales = new List<Student>();
             var lines = File.ReadAllLines(filePath);
-            
+            foreach (var line in lines)
+            {
+                string[] items = line.Split(',');
+                Student student = new Student
+                {
+                    Name = items[0],
+                    Subject = lines[1],
+                    Score = int.Parse(items[2])
+                };
+                sales.Add(student);
 
 
 
-
-
-
-
+            }
             return sales;
         }
 
