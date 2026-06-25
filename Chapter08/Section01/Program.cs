@@ -25,9 +25,19 @@
                 Console.WriteLine();
 
                 //登録
+                var keyd = pref;
+                if (prefOfficeDict.ContainsKey(keyd))
+                {
+                    Console.WriteLine("都道府県が重複しています。上書きしますか？y/n");
+                    string uwa = Console.ReadLine();
+                    if (uwa=="y")
+                    {
+                        var fiind = prefOfficeDict[keyd];
+                        bool resulte=prefOfficeDict.Remove(keyd);
+                        prefOfficeDict.Add(pref, prefCeptallocation);
+                    }
+                } else prefOfficeDict.Add(pref, prefCeptallocation);
 
-
-                prefOfficeDict.Add(pref, prefCeptallocation);
             }
 
             while (true)
