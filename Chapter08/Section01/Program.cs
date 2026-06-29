@@ -43,11 +43,7 @@
             while (true)
             {
                 //menu
-                Console.WriteLine("*****メニュー*****");
-                Console.WriteLine("1:一覧表示");
-                Console.WriteLine("2:検索");
-                Console.WriteLine("9:終了");
-                Console.WriteLine();
+                Menu();
 
                string menu=Console.ReadLine();
 
@@ -72,6 +68,14 @@
 
 
         }
+        private static void Menu() {
+            Console.WriteLine("*****メニュー*****");
+            Console.WriteLine("1:一覧表示");
+            Console.WriteLine("2:検索");
+            Console.WriteLine("9:終了");
+            Console.WriteLine();
+        }
+
         private static void Hyouji() {
             foreach (var f in prefOfficeDict) { Console.WriteLine("[都道府県:" + f.Key + "][県庁所在地:" + f.Value + "]"); }
         }
