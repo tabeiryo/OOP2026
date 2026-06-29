@@ -57,20 +57,12 @@
                 //検索
                 else if (menu == "2")
                 {
-                    Console.Write("都道府県:");
-                    string find = Console.ReadLine();
-                    var key = find;
-                    if (prefOfficeDict.ContainsKey(key))
-                    {
-                        var fiin = prefOfficeDict[key];
-                        Console.WriteLine(key + "の県庁所在地は" + fiin);
-                        Console.WriteLine();
-                    }
+                    Find();
                 }
                 //表示
                 else if (menu == "1")
                 {
-                    foreach (var f in prefOfficeDict) { Console.WriteLine("[都道府県:"+f.Key+"][県庁所在地:"+f.Value+"]"); }
+                    Hyouji();
                 }
 
                 else break;
@@ -80,5 +72,22 @@
 
 
         }
+        private static void Hyouji() {
+            foreach (var f in prefOfficeDict) { Console.WriteLine("[都道府県:" + f.Key + "][県庁所在地:" + f.Value + "]"); }
+        }
+
+        private static void Find() {
+            Console.Write("都道府県:");
+            string find = Console.ReadLine();
+            var key = find;
+            if (prefOfficeDict.ContainsKey(key))
+            {
+                var fiin = prefOfficeDict[key];
+                Console.WriteLine(key + "の県庁所在地は" + fiin);
+                Console.WriteLine();
+            }
+        }
+
+
     }
 }
