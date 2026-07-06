@@ -63,16 +63,14 @@ namespace Test01_02 {
         //問題１　合計値を表示（式形式で記述せよ）
         //　　　　出力結果【618】
         private static void Exercise01(int[] numbers) {
-            var result = numbers.Sum(b => b);
-            Console.WriteLine(result);
+            Console.WriteLine(numbers.Sum(b => b));
         }
 
 
         //問題２　偶数の最大値を表示（式形式で記述せよ）
         //　　　　出力結果【94】
         private static void Exercise02(int[] numbers) {
-            var result = numbers.Where(b => b%2==0).Max(b=>b);
-            Console.WriteLine(result);
+            Console.WriteLine(numbers.Where(b => b % 2 == 0).Max(b => b));
         }
 
 
@@ -80,12 +78,12 @@ namespace Test01_02 {
         //　　　　出力結果【12 14 17 20 31 35 40 48 53 76 87 91 94】
         private static void Exercise03(int[] numbers) {
             var result = numbers.OrderBy(b => b);
-            int i=0;
+            var cnt = 0;
             foreach (var item in result)
             {
-                
-                Console.WriteLine(item);
-               
+                if (cnt != 0) { Console.Write(" "); }
+                Console.Write(item);
+                cnt++;
             }
         }
 
@@ -93,8 +91,11 @@ namespace Test01_02 {
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(int[] numbers) {
             var result = numbers.Where(b => b >= 10 ).Where(b=>b<=50);
+            var cnt = 0;
             foreach (var item in result) {
-                Console.WriteLine(item);
+                if (cnt != 0) { Console.Write(" "); }
+                Console.Write(item);
+                cnt++;
             }
         }
 
