@@ -1,4 +1,6 @@
 using System.Globalization;
+using System.Windows.Forms.Design;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Section01
 {
@@ -11,16 +13,27 @@ namespace Section01
         private void InitializeComponent()
         {
             dTP1 = new DateTimePicker();
-            bt1 = new Button();
-            tbout = new TextBox();
+            bt1 = new System.Windows.Forms.Button();
+            tbout = new System.Windows.Forms.TextBox();
             day = new NumericUpDown();
             label1 = new Label();
             VARSE = new DateTimePicker();
-            texbox = new TextBox();
-            keisan = new Button();
+            texbox = new System.Windows.Forms.TextBox();
+            keisan = new System.Windows.Forms.Button();
             numericUpDown1 = new NumericUpDown();
+            texbox2 = new System.Windows.Forms.TextBox();
+            notuse = new System.Windows.Forms.Button();
+            dateTimePicker1 = new DateTimePicker();
+            bt3 = new System.Windows.Forms.Button();
+            Datepit = new DateTimePicker();
+            birthbt = new System.Windows.Forms.Button();
+            tukawanai = new NumericUpDown();
+            birthdaypic = new DateTimePicker();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)day).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tukawanai).BeginInit();
             SuspendLayout();
             // 
             // dTP1
@@ -60,7 +73,7 @@ namespace Section01
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(430, 125);
+            label1.Location = new Point(430, 217);
             label1.Name = "label1";
             label1.Size = new Size(31, 15);
             label1.TabIndex = 4;
@@ -100,11 +113,114 @@ namespace Section01
             numericUpDown1.Size = new Size(120, 34);
             numericUpDown1.TabIndex = 8;
             // 
+            // texbox2
+            // 
+            texbox2.Location = new Point(112, 332);
+            texbox2.Multiline = true;
+            texbox2.Name = "texbox2";
+            texbox2.Size = new Size(331, 58);
+            texbox2.TabIndex = 6;
+            // 
+            // notuse
+            // 
+            notuse.Font = new Font("Yu Gothic UI", 11F);
+            notuse.ForeColor = SystemColors.ActiveCaptionText;
+            notuse.Location = new Point(430, 396);
+            notuse.Name = "notuse";
+            notuse.Size = new Size(167, 29);
+            notuse.TabIndex = 7;
+            notuse.Text = "ëÊéOèTÇÃì˙ójì˙É{É^Éì";
+            notuse.UseVisualStyleBackColor = true;
+            notuse.Click += notuse_Click;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Font = new Font("Yu Gothic UI", 15F);
+            dateTimePicker1.Location = new Point(112, 254);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(203, 34);
+            dateTimePicker1.TabIndex = 5;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // bt3
+            // 
+            bt3.Font = new Font("Yu Gothic UI", 5F);
+            bt3.ForeColor = SystemColors.ButtonHighlight;
+            bt3.Location = new Point(2, 0);
+            bt3.Name = "bt3";
+            bt3.Size = new Size(25, 11);
+            bt3.TabIndex = 7;
+            bt3.Text = "Ç¬Ç©ÇÌÇ»Ç¢";
+            bt3.UseVisualStyleBackColor = true;
+            bt3.Click += bt3_Click;
+            // 
+            // Datepit
+            // 
+            Datepit.Font = new Font("Yu Gothic UI", 15F);
+            Datepit.Location = new Point(221, 396);
+            Datepit.Name = "Datepit";
+            Datepit.Size = new Size(203, 34);
+            Datepit.TabIndex = 5;
+            Datepit.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // birthbt
+            // 
+            birthbt.Location = new Point(112, 400);
+            birthbt.Name = "birthbt";
+            birthbt.Size = new Size(96, 23);
+            birthbt.TabIndex = 9;
+            birthbt.Text = "íaê∂ì˙É{É^Éì";
+            birthbt.UseVisualStyleBackColor = true;
+            birthbt.Click += birthbt_Click;
+            // 
+            // tukawanai
+            // 
+            tukawanai.Location = new Point(128, 12);
+            tukawanai.Name = "tukawanai";
+            tukawanai.Size = new Size(120, 23);
+            tukawanai.TabIndex = 10;
+            // 
+            // birthdaypic
+            // 
+            birthdaypic.Location = new Point(128, 442);
+            birthdaypic.Name = "birthdaypic";
+            birthdaypic.Size = new Size(200, 23);
+            birthdaypic.TabIndex = 11;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(67, 448);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 12;
+            label2.Text = "íaê∂ì˙Å®";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(334, 442);
+            label3.Name = "label3";
+            label3.Size = new Size(43, 15);
+            label3.TabIndex = 13;
+            label3.Text = "ç°ì˙Å™";
+            // 
             // Form1
             // 
-            ClientSize = new Size(624, 451);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(624, 489);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(birthdaypic);
+            Controls.Add(tukawanai);
+            Controls.Add(birthbt);
             Controls.Add(numericUpDown1);
+            Controls.Add(bt3);
+            Controls.Add(notuse);
             Controls.Add(keisan);
+            Controls.Add(texbox2);
+            Controls.Add(Datepit);
+            Controls.Add(dateTimePicker1);
             Controls.Add(texbox);
             Controls.Add(VARSE);
             Controls.Add(label1);
@@ -112,12 +228,26 @@ namespace Section01
             Controls.Add(tbout);
             Controls.Add(bt1);
             Controls.Add(dTP1);
+            ForeColor = SystemColors.ActiveCaptionText;
             Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)day).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tukawanai).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
+        }
+
+        private void bt3_Click(object? sender, EventArgs e)
+        {
+            
+        }
+
+        private void notuse_Click(object? sender, EventArgs e)
+        {
+            var date = Datepit.Value;
+            var day = dayweek(date.Year, date.Month, DayOfWeek.Sunday, 3);
+            texbox2.Text = date.Year + "îN" + date.Month + "åéÇÃëÊ3èTÇÃì˙ójì˙ÇÕ" + day.ToString();
         }
 
         private void bt1_Click(object sender, EventArgs e)
@@ -125,6 +255,10 @@ namespace Section01
             DateTime date = dTP1.Value;
 
             tbout.Text = date.AddDays((Double)day.Value).ToString();
+
+            var date2 = DateTime.Today;
+            var week = Weeek(date2);
+            texbox2.Text = date2.ToString() + "ÇÕëÊ" + week + "èT";
         }
 
         private void keisan_Click(object sender, EventArgs e)
@@ -132,9 +266,68 @@ namespace Section01
             DateTime birth = VARSE.Value;
             DateTime today = DateTime.Today;
             TimeSpan diff = today.Date - birth.Date;
-            var nen = diff / 365;
-            tbout.Text = diff.ToString();
-            texbox.Text = nen.ToString();
+            // var nen = diff / 365;
+            //tbout.Text = diff.ToString();
+            texbox.Text = diff.ToString();
+            var age = Getage(today, birth);
+            tbout.Text = age.ToString();
+        }
+
+        static int Getage(DateTime today, DateTime birth)
+        {
+            var age = today.Year - birth.Year;
+            if (today < birth.AddYears(age)) { age--; }
+            return age;
+        }
+        static int Weeek(DateTime date)
+        {
+            var firthday = new DateTime(date.Year, date.Month, 1);
+            var firthweek = (int)(firthday.DayOfWeek);
+            return (date.Day + firthweek - 1) / 7 + 1;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        static DateTime dayweek(int year, int month, DayOfWeek dayofweek, int nth)
+        {
+            var firstday = Enumerable.Range(1, 7).Select(d => new DateTime(year, month, d)).First(b => b.DayOfWeek == dayofweek).Day;
+            var day = firstday + (nth - 1) * 7;
+            return new DateTime(year, month, day);
+
+        }
+
+        private void birthbt_Click(object sender, EventArgs e)
+        {
+            DateTime today = Datepit.Value;
+            DateTime birth = birthdaypic.Value;
+            if (birth.Year == today.Year) {
+                if (birth.Month == today.Month)
+                {
+                    if (birth.Day == today.Day)
+                    {
+                        texbox2.Text = "ç°ì˙Ç™íaê∂ì˙";
+                    }
+                    else if (birth.Day > today.Day)
+                    {
+                        texbox2.Text = birth.Day - today.Day + "ì˙å„";
+                    }
+                    else
+                    {
+                        texbox2.Text = "óàîN";
+                    }
+
+                }
+                else if (birth.Month > today.Month) {
+                    texbox2.Text = birth.Month - today.Month + "Éñåéå„";
+                }else texbox2.Text = "óàîN";
+            }
+            else if (birth.Year > today.Year)
+            {
+                texbox2.Text = "ãéîN";
+            }
+            else texbox2.Text = "óàîN";
         }
     }
 }

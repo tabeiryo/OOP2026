@@ -11,5 +11,15 @@
         private TextBox texbox;
         private Button keisan;
         private NumericUpDown numericUpDown1;
+        private TextBox texbox2;
+        private Button notuse;
+        private DateTimePicker dateTimePicker1;
+        private Button bt3;
+        private DateTimePicker Datepit;
+        private Button birthbt;
+        private NumericUpDown tukawanai;
+        private DateTimePicker birthdaypic;
+        private Label label2;
+        private Label label3;
     }
 }
