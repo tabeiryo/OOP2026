@@ -31,9 +31,16 @@ namespace Section01
             birthdaypic = new DateTimePicker();
             label2 = new Label();
             label3 = new Label();
+            label4 = new Label();
+            numericUpDown2 = new NumericUpDown();
+            dateTimePicker2 = new DateTimePicker();
+            label5 = new Label();
+            bt5 = new System.Windows.Forms.Button();
+            texBox6 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)day).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tukawanai).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             SuspendLayout();
             // 
             // dTP1
@@ -175,9 +182,10 @@ namespace Section01
             // 
             // tukawanai
             // 
-            tukawanai.Location = new Point(128, 12);
+            tukawanai.Font = new Font("Yu Gothic UI", 1F);
+            tukawanai.Location = new Point(2, 4);
             tukawanai.Name = "tukawanai";
-            tukawanai.Size = new Size(120, 23);
+            tukawanai.Size = new Size(120, 9);
             tukawanai.TabIndex = 10;
             // 
             // birthdaypic
@@ -205,10 +213,70 @@ namespace Section01
             label3.TabIndex = 13;
             label3.Text = "今日↑";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(729, 25);
+            label4.Name = "label4";
+            label4.Size = new Size(62, 15);
+            label4.TabIndex = 14;
+            label4.Text = "誕生日まで";
+            // 
+            // numericUpDown2
+            // 
+            numericUpDown2.Font = new Font("Yu Gothic UI", 1F);
+            numericUpDown2.Location = new Point(2, 17);
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(120, 9);
+            numericUpDown2.TabIndex = 15;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Font = new Font("Yu Gothic UI", 18F);
+            dateTimePicker2.Location = new Point(634, 125);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(200, 39);
+            dateTimePicker2.TabIndex = 16;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI", 15F);
+            label5.Location = new Point(742, 88);
+            label5.Name = "label5";
+            label5.Size = new Size(92, 28);
+            label5.TabIndex = 17;
+            label5.Text = "誕生日↓";
+            // 
+            // bt5
+            // 
+            bt5.Font = new Font("Yu Gothic UI", 15F);
+            bt5.Location = new Point(840, 121);
+            bt5.Name = "bt5";
+            bt5.Size = new Size(227, 43);
+            bt5.TabIndex = 18;
+            bt5.Text = "誕生日まで○○日ボタン";
+            bt5.UseVisualStyleBackColor = true;
+            bt5.Click += bt5_Click;
+            // 
+            // texBox6
+            // 
+            texBox6.Font = new Font("Yu Gothic UI", 15F);
+            texBox6.Location = new Point(659, 194);
+            texBox6.Name = "texBox6";
+            texBox6.Size = new Size(351, 34);
+            texBox6.TabIndex = 19;
+            // 
             // Form1
             // 
             BackColor = SystemColors.Control;
-            ClientSize = new Size(624, 489);
+            ClientSize = new Size(1096, 489);
+            Controls.Add(texBox6);
+            Controls.Add(bt5);
+            Controls.Add(label5);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(numericUpDown2);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(birthdaypic);
@@ -233,6 +301,7 @@ namespace Section01
             ((System.ComponentModel.ISupportInitialize)day).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)tukawanai).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -240,7 +309,7 @@ namespace Section01
 
         private void bt3_Click(object? sender, EventArgs e)
         {
-            
+
         }
 
         private void notuse_Click(object? sender, EventArgs e)
@@ -302,7 +371,8 @@ namespace Section01
         {
             DateTime today = Datepit.Value;
             DateTime birth = birthdaypic.Value;
-            if (birth.Year == today.Year) {
+            if (birth.Year == today.Year)
+            {
                 if (birth.Month == today.Month)
                 {
                     if (birth.Day == today.Day)
@@ -319,15 +389,33 @@ namespace Section01
                     }
 
                 }
-                else if (birth.Month > today.Month) {
+                else if (birth.Month > today.Month)
+                {
                     texbox2.Text = birth.Month - today.Month + "ヶ月後";
-                }else texbox2.Text = "来年";
+                }
+                else texbox2.Text = "来年";
             }
             else if (birth.Year > today.Year)
             {
                 texbox2.Text = "去年";
             }
             else texbox2.Text = "来年";
+        }
+
+        
+
+        
+
+        private void bt5_Click(object sender, EventArgs e)
+        {
+            DateTime birth = dateTimePicker2.Value;
+            DateTime today = DateTime.Today;
+            TimeSpan diff = birth.Date - today.Date;
+            if (today.Date > birth.Date)
+            {
+                int day = diff.Days+365;
+                texBox6.Text = day.ToString()+"日後";
+            }else texBox6.Text= diff.Days.ToString() + "日後";
         }
     }
 }

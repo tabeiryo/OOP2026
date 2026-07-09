@@ -21,5 +21,11 @@
         private DateTimePicker birthdaypic;
         private Label label2;
         private Label label3;
+        private Label label4;
+        private NumericUpDown numericUpDown2;
+        private DateTimePicker dateTimePicker2;
+        private Label label5;
+        private Button bt5;
+        private TextBox texBox6;
     }
 }
