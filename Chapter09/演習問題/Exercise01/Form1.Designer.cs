@@ -34,7 +34,7 @@
             bt2 = new Button();
             texbox2 = new TextBox();
             bt3 = new Button();
-            texbox = new TextBox();
+            texbox3 = new TextBox();
             SuspendLayout();
             // 
             // bt1
@@ -46,6 +46,7 @@
             bt1.TabIndex = 0;
             bt1.Text = "丸1";
             bt1.UseVisualStyleBackColor = true;
+            bt1.Click += bt1_Click;
             // 
             // label1
             // 
@@ -72,6 +73,7 @@
             bt2.TabIndex = 0;
             bt2.Text = "丸2";
             bt2.UseVisualStyleBackColor = true;
+            bt2.Click += bt2_Click;
             // 
             // texbox2
             // 
@@ -89,20 +91,21 @@
             bt3.TabIndex = 0;
             bt3.Text = "丸3";
             bt3.UseVisualStyleBackColor = true;
+            bt3.Click += bt3_Click;
             // 
-            // texbox
+            // texbox3
             // 
-            texbox.Location = new Point(195, 217);
-            texbox.Name = "texbox";
-            texbox.Size = new Size(231, 23);
-            texbox.TabIndex = 2;
+            texbox3.Location = new Point(195, 217);
+            texbox3.Name = "texbox3";
+            texbox3.Size = new Size(231, 23);
+            texbox3.TabIndex = 2;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(texbox);
+            Controls.Add(texbox3);
             Controls.Add(texbox2);
             Controls.Add(bt3);
             Controls.Add(texbox1);
@@ -123,6 +126,6 @@
         private Button bt2;
         private TextBox texbox2;
         private Button bt3;
-        private TextBox texbox;
+        private TextBox texbox3;
     }
 }
