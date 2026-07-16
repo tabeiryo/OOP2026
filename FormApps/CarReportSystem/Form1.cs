@@ -35,6 +35,9 @@ namespace CarReportSystem {
                     Report = tbReport.Text,
                     Picture = pbPicture.Image,
                 };
+                SetComboBoxAuthor(cbAuthor.Text.ToString());
+                SetCarName(cbCarName.Text.ToString());
+
                 listCarReports.Add(carReport);
                 btNewInput_Click(sender, e);
             }
@@ -88,6 +91,16 @@ namespace CarReportSystem {
             if (Maker.ToString() == "ƒXƒoƒ‹") { rbSubaru.Checked = true; }
             if (Maker.ToString() == "—A“üŽÔ") { rbImport.Checked = true; }
             if (Maker.ToString() == "‚»‚Ì‘¼") { rbOther.Checked = true; }
+        }
+        private void SetComboBoxAuthor(string author) {
+
+            if (cbAuthor.Items.Contains(author)) { }
+            else { cbAuthor.Items.Add(author); }
+        }
+        private void SetCarName(string carName)
+        {
+            if (cbCarName.Items.Contains(carName)) { }
+            else { cbCarName.Items.Add(carName); }
         }
     }
 }
