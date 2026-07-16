@@ -74,17 +74,20 @@ namespace CarReportSystem {
         private void dgvRecords_Click(object sender, EventArgs e)
         {
             dtpDate.Value =(DateTime) dgvRecords.CurrentRow.Cells["Date"].Value;
-            cbAuthor.Text = dgvRecords.CurrentRow.Cells["author"].ToString();
-            if (dgvRecords.CurrentRow.Cells["Maker"].ToString()=="トヨタ") { rbToyota.Checked = true; }
-            if (dgvRecords.CurrentRow.Cells["Maker"].ToString() == "日産") { rbNissan.Checked = true; }
-            if (dgvRecords.CurrentRow.Cells["Maker"].ToString() == "ホンダ") { rbHonda.Checked = true; }
-            if (dgvRecords.CurrentRow.Cells["Maker"].ToString() == "スバル") { rbSubaru.Checked = true; }
-            if (dgvRecords.CurrentRow.Cells["Maker"].ToString() == "輸入車") { rbImport.Checked = true; }
-            if (dgvRecords.CurrentRow.Cells["Maker"].ToString() == "その他") { rbOther.Checked = true; }
-            cbCarName.Text = dgvRecords.CurrentRow.Cells["CarName"].ToString();
-            tbReport.Text = dgvRecords.CurrentRow.Cells["Report"].ToString();
+            cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["author"].Value;
+            SetRadioButtonMaker(dgvRecords.CurrentRow.Cells["Meker"].Value);
+            cbCarName.Text = (string)dgvRecords.CurrentRow.Cells["CarName"].Value;
+            tbReport.Text = (string)dgvRecords.CurrentRow.Cells["Report"].Value;
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
             ;
+        }
+        private void SetRadioButtonMaker(object Maker) {
+            if (Maker.ToString() == "トヨタ") { rbToyota.Checked = true; }
+            if (Maker.ToString() == "日産") { rbNissan.Checked = true; }
+            if (Maker.ToString() == "ホンダ") { rbHonda.Checked = true; }
+            if (Maker.ToString() == "スバル") { rbSubaru.Checked = true; }
+            if (Maker.ToString() == "輸入車") { rbImport.Checked = true; }
+            if (Maker.ToString() == "その他") { rbOther.Checked = true; }
         }
     }
 }
