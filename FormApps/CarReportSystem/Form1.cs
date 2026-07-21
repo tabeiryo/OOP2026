@@ -72,11 +72,11 @@ namespace CarReportSystem {
             tbReport.Text = string.Empty;
             pbPicture.Image = null;
         }
-        private void Form1_Click(object sender, EventArgs e){}
+        private void Form1_Click(object sender, EventArgs e) { }
 
         private void dgvRecords_Click(object sender, EventArgs e)
         {
-            dtpDate.Value =(DateTime) dgvRecords.CurrentRow.Cells["Date"].Value;
+            dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
             cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["author"].Value;
             SetRadioButtonMaker(dgvRecords.CurrentRow.Cells["Meker"].Value);
             cbCarName.Text = (string)dgvRecords.CurrentRow.Cells["CarName"].Value;
@@ -84,7 +84,8 @@ namespace CarReportSystem {
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
             ;
         }
-        private void SetRadioButtonMaker(object Maker) {
+        private void SetRadioButtonMaker(object Maker)
+        {
             if (Maker.ToString() == "トヨタ") { rbToyota.Checked = true; }
             if (Maker.ToString() == "日産") { rbNissan.Checked = true; }
             if (Maker.ToString() == "ホンダ") { rbHonda.Checked = true; }
@@ -92,7 +93,8 @@ namespace CarReportSystem {
             if (Maker.ToString() == "輸入車") { rbImport.Checked = true; }
             if (Maker.ToString() == "その他") { rbOther.Checked = true; }
         }
-        private void SetComboBoxAuthor(string author) {
+        private void SetComboBoxAuthor(string author)
+        {
 
             if (cbAuthor.Items.Contains(author)) { }
             else { cbAuthor.Items.Add(author); }
@@ -101,6 +103,28 @@ namespace CarReportSystem {
         {
             if (cbCarName.Items.Contains(carName)) { }
             else { cbCarName.Items.Add(carName); }
+        }
+
+        private void btDeletePicture_Click(object sender, EventArgs e)
+        {
+            pbPicture.Image = null;
+        }
+
+        private void btOpenPicture_Click(object sender, EventArgs e)
+        {
+            開くToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btDeleteRecord_Click(object sender, EventArgs e)
+        {
+            if (listCarReports == null)
+            { }
+            else
+            {
+                listCarReports.RemoveAt(dgvRecords.CurrentRow.Index);
+            }
+           
+
         }
     }
 }
