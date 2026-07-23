@@ -62,6 +62,7 @@
             このアプリについてToolStripMenuItem = new ToolStripMenuItem();
             tsslb = new StatusStrip();
             ofdOpen = new OpenFileDialog();
+            colorDialog1 = new ColorDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -233,13 +234,14 @@
             // dgvRecords
             // 
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRecords.Location = new Point(117, 431);
+            dgvRecords.Location = new Point(123, 431);
             dgvRecords.MultiSelect = false;
             dgvRecords.Name = "dgvRecords";
             dgvRecords.ReadOnly = true;
             dgvRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecords.Size = new Size(719, 292);
             dgvRecords.TabIndex = 4;
+            dgvRecords.SelectionChanged += dgvRecords_SelectionChanged;
             dgvRecords.Click += dgvRecords_Click;
             // 
             // tbReport
@@ -331,6 +333,7 @@
             btModifyRecord.TabIndex = 7;
             btModifyRecord.Text = "修正";
             btModifyRecord.UseVisualStyleBackColor = false;
+            btModifyRecord.Click += btModifyRecord_Click;
             // 
             // btDeleteRecord
             // 
@@ -394,6 +397,7 @@
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
             色設定ToolStripMenuItem.Size = new Size(155, 22);
             色設定ToolStripMenuItem.Text = "色設定...";
+            色設定ToolStripMenuItem.Click += 色設定ToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
@@ -406,6 +410,7 @@
             終了ToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
             終了ToolStripMenuItem.Size = new Size(155, 22);
             終了ToolStripMenuItem.Text = "終了(&X)";
+            終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
             // 
             // ヘルプHToolStripMenuItem
             // 
@@ -436,6 +441,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Snow;
             ClientSize = new Size(856, 743);
             Controls.Add(tsslb);
             Controls.Add(pbPicture);
@@ -516,5 +522,6 @@
         private ToolStripMenuItem このアプリについてToolStripMenuItem;
         private StatusStrip tsslb;
         private OpenFileDialog ofdOpen;
+        private ColorDialog colorDialog1;
     }
 }
