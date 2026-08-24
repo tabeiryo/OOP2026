@@ -22,7 +22,8 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             label1 = new Label();
             dtpDate = new DateTimePicker();
             label2 = new Label();
@@ -63,6 +64,8 @@
             tsslbMessage = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
             cdColor = new ColorDialog();
+            sfdsaveFile = new SaveFileDialog();
+            ofdopenFile = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -381,6 +384,7 @@
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
             保存ToolStripMenuItem.Size = new Size(180, 22);
             保存ToolStripMenuItem.Text = "保存...";
+            保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -438,6 +442,10 @@
             statusStrip1.SizingGrip = false;
             statusStrip1.TabIndex = 11;
             statusStrip1.Text = "statusStrip1";
+            // 
+            // ofdopenFile
+            // 
+            ofdopenFile.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -527,5 +535,7 @@
         private ToolStripStatusLabel tsslbMessage;
         private StatusStrip statusStrip1;
         private ColorDialog cdColor;
+        private SaveFileDialog sfdsaveFile;
+        private OpenFileDialog ofdopenFile;
     }
 }
