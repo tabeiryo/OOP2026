@@ -22,8 +22,7 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             label1 = new Label();
             dtpDate = new DateTimePicker();
             label2 = new Label();
@@ -64,8 +63,8 @@
             tsslbMessage = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
             cdColor = new ColorDialog();
-            sfdsaveFile = new SaveFileDialog();
-            ofdopenFile = new OpenFileDialog();
+            sfdReportFileSave = new SaveFileDialog();
+            ofdReportFileOpen = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -378,6 +377,7 @@
             開くToolStripMenuItem.Name = "開くToolStripMenuItem";
             開くToolStripMenuItem.Size = new Size(180, 22);
             開くToolStripMenuItem.Text = "開く...";
+            開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 保存ToolStripMenuItem
             // 
@@ -443,9 +443,9 @@
             statusStrip1.TabIndex = 11;
             statusStrip1.Text = "statusStrip1";
             // 
-            // ofdopenFile
+            // ofdReportFileOpen
             // 
-            ofdopenFile.FileName = "openFileDialog1";
+            ofdReportFileOpen.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -535,7 +535,7 @@
         private ToolStripStatusLabel tsslbMessage;
         private StatusStrip statusStrip1;
         private ColorDialog cdColor;
-        private SaveFileDialog sfdsaveFile;
-        private OpenFileDialog ofdopenFile;
+        private SaveFileDialog sfdReportFileSave;
+        private OpenFileDialog ofdReportFileOpen;
     }
 }
