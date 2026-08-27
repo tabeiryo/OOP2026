@@ -27,11 +27,23 @@ namespace CarReportSystem {
             var serializer = new XmlSerializer(typeof(SettingsDate));
             serializer .Serialize(writer, date);
         }
+        public void Load() {
+            if (!File.Exists(FileName))
+                return;
+            using var reader = XmlReader.Create(FileName) ;
+            var serializer = new XmlSerializer(typeof(Settings));
+
+            if (serializer.Deserialize(reader) is SettingsDate date)
+            {
+                MainFormBackColor=date.MainFormBackColor;
+            }
+            }
 
 
         //保存用
         public　class SettingsDate { 
         public int MainFormBackColor { get; set; }
+
         }
 
     }
