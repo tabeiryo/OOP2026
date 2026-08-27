@@ -6,7 +6,7 @@ namespace CarReportSystem {
     {
         //唯一のSettingsOBJ
        private static readonly Settings _instance = new Settings();
-        private Stream FileName;
+        private String FileName;
 
         //メイン画面に設定した色情報
         public int MainFormBackColor { get; set; }
