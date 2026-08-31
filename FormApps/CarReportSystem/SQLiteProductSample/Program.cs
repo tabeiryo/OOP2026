@@ -9,7 +9,6 @@ internal static class Program
 
         try
         {
-            Database.Initialize();
             Application.Run(new Form1());
         }
         catch (Exception ex)
