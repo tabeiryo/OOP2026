@@ -9,23 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="SQLiteProductSample\.vs\**" />
-    <Compile Remove="SQLiteProductSample\bin\**" />
-    <Compile Remove="SQLiteProductSample\obj\**" />
-    <EmbeddedResource Remove="SQLiteProductSample\.vs\**" />
-    <EmbeddedResource Remove="SQLiteProductSample\bin\**" />
-    <EmbeddedResource Remove="SQLiteProductSample\obj\**" />
-    <None Remove="SQLiteProductSample\.vs\**" />
-    <None Remove="SQLiteProductSample\bin\**" />
-    <None Remove="SQLiteProductSample\obj\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Class1.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="SQLiteProductSample\SQLiteProductSample.csproj" />
   </ItemGroup>
 
 </Project>
