@@ -12,6 +12,14 @@ public partial class Form1 : Form
     public Form1()
     {
         InitializeComponent();
+        //dgv列を自動生成
+        dgvProducts.AutoGenerateColumns=true;
+        //Bindinglist設定
+        dgvProducts.DataSource=_products;
+
+        ReloadProducts();
+        //ステータスバーに表示
+        tsslMessage.Text = $"DB:{Database.FilePath}";
     }
 
     private void btAdd_Click(object sender, EventArgs e)
@@ -41,7 +49,12 @@ public partial class Form1 : Form
 
     private void ReloadProducts()
     {
-       
+       _products.Clear();
+
+        foreach (var product in _repository.GetALL()) { 
+        _products.Add(product);
+        }
+        dgvProducts.ClearSelection();
     }
 
     private bool TryGetInput(out string name, out int price)
