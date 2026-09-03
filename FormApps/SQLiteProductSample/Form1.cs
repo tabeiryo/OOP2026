@@ -9,6 +9,7 @@ public partial class Form1 : Form
     // DB操作を担当するRepository
     private readonly ProductRepository _repository = new();
 
+
     public Form1()
     {
         InitializeComponent();
