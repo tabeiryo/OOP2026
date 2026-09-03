@@ -13,7 +13,7 @@ namespace CarReportSystem
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
 
         //設定クラスのオブジェクトを生成
-       // Settings settings = Settings.Instance;
+        // Settings settings = Settings.Instance;
 
         public Form1()
         {
@@ -27,14 +27,15 @@ namespace CarReportSystem
             {
                 Settings.Instance.Load();
                 BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
-            }catch (Exception ex)
-                {
-                  tsslbMessage.Text = "設定ファイル読み込みエラー";
-                  MessageBox.Show(ex.Message);//←より具体的なエラーを出力         
-               }
-              //設定ファイルを読み込み背景色を設定する（逆シリアル化）
+            }
+            catch (Exception ex)
+            {
+                tsslbMessage.Text = "設定ファイル読み込みエラー";
+                MessageBox.Show(ex.Message);//←より具体的なエラーを出力         
+            }
+            //設定ファイルを読み込み背景色を設定する（逆シリアル化）
 
-            
+
         }
 
         //追加ボタンイベントハンドラ
@@ -323,6 +324,11 @@ namespace CarReportSystem
                     MessageBox.Show(ex.Message);
                 }
             }
+
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
 
         }
     }
