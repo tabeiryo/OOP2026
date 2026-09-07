@@ -51,7 +51,7 @@ namespace CarReportSystem
                 tsslbMessage.Text = "記録者、または車名が未入力です";
                 return;
             }
-
+             
             var carReport = new CarReport
             {
                 Date = dtpDate.Value.Date,
@@ -70,7 +70,7 @@ namespace CarReportSystem
             dgvRecords.ClearSelection(); //セルの選択を解除する
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
-
+        
         private MakerGroup GetRadioButtonMaker()
         {
             if (rbToyota.Checked)

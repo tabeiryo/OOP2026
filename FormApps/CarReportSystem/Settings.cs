@@ -5,25 +5,16 @@ namespace CarReportSystem {
     public sealed class Settings
     {
         private const string FileName = "setting.xml";
-
+        
         //外部からNEWできなくする
         private Settings() { }
 
         //  唯一のobjを取得
         public static Settings Instance { get; } = new();
 
-        //唯一のSettingsOBJ
-        private static readonly Settings _instance = new Settings();
-        private String FileName;
-
         //メイン画面に設定した色情報
         public int MainFormBackColor { get; set; }
         =SystemColors.Control.ToArgb();
-
-       
-
-
-        
 
 
         public void  Save() { 
@@ -34,10 +25,8 @@ namespace CarReportSystem {
             serializer .Serialize(writer, date);
         }
         public void Load() {
-            if (!File.Exists(FileName))
-                return;
             using var reader = XmlReader.Create(FileName) ;
-            var serializer = new XmlSerializer(typeof(Settings));
+            var serializer = new XmlSerializer(typeof(SettingsDate));
 
             if (serializer.Deserialize(reader) is SettingsDate date)
             {
