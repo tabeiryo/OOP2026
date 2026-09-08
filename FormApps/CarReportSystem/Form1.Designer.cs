@@ -125,6 +125,7 @@
             groupBox1.Size = new Size(415, 53);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // rbOther
             // 
@@ -191,6 +192,7 @@
             rbToyota.TabIndex = 0;
             rbToyota.Text = "トヨタ";
             rbToyota.UseVisualStyleBackColor = true;
+            rbToyota.CheckedChanged += rbToyota_CheckedChanged;
             // 
             // cbAuthor
             // 
@@ -376,17 +378,17 @@
             // 
             // 開くToolStripMenuItem
             // 
-            開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            開くToolStripMenuItem.Size = new Size(155, 22);
-            開くToolStripMenuItem.Text = "開く...";
-            開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
+          //  開くToolStripMenuItem.Name = "開くToolStripMenuItem";
+          //  開くToolStripMenuItem.Size = new Size(155, 22);
+           // 開くToolStripMenuItem.Text = "開く...";
+          //  開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 保存ToolStripMenuItem
             // 
-            保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            保存ToolStripMenuItem.Size = new Size(155, 22);
-            保存ToolStripMenuItem.Text = "保存...";
-            保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
+          //  保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
+          //  保存ToolStripMenuItem.Size = new Size(155, 22);
+          //  保存ToolStripMenuItem.Text = "保存...";
+          //  保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 

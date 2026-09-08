@@ -35,7 +35,7 @@ namespace CarReportSystem
             }
             //設定ファイルを読み込み背景色を設定する（逆シリアル化）
 
-
+            
         }
 
         //追加ボタンイベントハンドラ
@@ -51,7 +51,7 @@ namespace CarReportSystem
                 tsslbMessage.Text = "記録者、または車名が未入力です";
                 return;
             }
-             
+
             var carReport = new CarReport
             {
                 Date = dtpDate.Value.Date,
@@ -70,7 +70,7 @@ namespace CarReportSystem
             dgvRecords.ClearSelection(); //セルの選択を解除する
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
-        
+
         private MakerGroup GetRadioButtonMaker()
         {
             if (rbToyota.Checked)
@@ -328,6 +328,16 @@ namespace CarReportSystem
         }
 
         private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbToyota_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
