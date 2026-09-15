@@ -375,23 +375,11 @@
             ファイルAToolStripMenuItem.Name = "ファイルAToolStripMenuItem";
             ファイルAToolStripMenuItem.Size = new Size(67, 20);
             ファイルAToolStripMenuItem.Text = "ファイル(&F)";
-            // 
-            // 開くToolStripMenuItem
-            // 
-          //  開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-          //  開くToolStripMenuItem.Size = new Size(155, 22);
-           // 開くToolStripMenuItem.Text = "開く...";
-          //  開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
-            // 
-            // 保存ToolStripMenuItem
-            // 
-          //  保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-          //  保存ToolStripMenuItem.Size = new Size(155, 22);
-          //  保存ToolStripMenuItem.Text = "保存...";
-          //  保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
-            // 
+             
+             
+             
             // toolStripSeparator1
-            // 
+             
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(152, 6);
             // 
@@ -484,7 +472,7 @@
             Name = "Form1";
             Text = "試乗レポート管理システム";
             FormClosed += Form1_FormClosed;
-            Load += Form1_Load;
+            //Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).EndInit();

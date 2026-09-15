@@ -1,5 +1,4 @@
 ﻿namespace CarReportSystem {
-    //[Serializable]
     public class CarReport {
         
        

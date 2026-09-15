@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarReportSystem
 {
     public class CarReportRepository
     {
-        public List<CarReport> GetALL()
+        public  List<CarReport> GetALL()
         {
             var carReports = new List<CarReport>();
             using var connection = Database.GetConnection();
@@ -38,23 +39,31 @@ ORDER   BY  Id;
                     Maker = (CarReport.MakerGroup)reader.GetInt32(3),
                     CarName = reader.GetString(4),
                     Report = reader.GetString(5),
-                    Picture = BytesToImage(reader.GetByte(6))
+                  //  Picture = ByteToImage(reader.GetByte(6))
                    
                 });
             }
             return carReports;
         }
-
-        private Image BytesToImage(byte v)
+        int i = 0;
+        private Image ByteToImage(byte v)
         {
             
-                Byte[] bytes = new Byte[v];
-                return BytesToImage(bytes);
-            
-            }
+                Byte[] bytes = new Byte[i];
+            bytes[i] = v;
+            using var stream = new MemoryStream(bytes[i]);
+            using var image = Image.FromStream(stream);
+            i++;
+            // MemoryStream破棄後も利用できるようBitmapとしてコピーする。
+            return new Bitmap(image);
 
+        }
+        
+
+
+        //DateTime Date,string Author,CarReport.MakerGroup Maker,string CarName,string Report,Image Picture
         //登録
-        public int Add( DateTime Date,string Author,CarReport.MakerGroup Maker,string CarName,string Report,Image Picture)
+        public static int Add(CarReport carReport)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -70,12 +79,12 @@ VALUES
 SELECT last_insert_rowid();
 """;
 
-            command.Parameters.AddWithValue("$date", Date);
-            command.Parameters.AddWithValue("$author", Author);
-            command.Parameters.AddWithValue("$maker", Maker);
-            command.Parameters.AddWithValue("$carName", CarName);
-            command.Parameters.AddWithValue("$report", Report);
-            command.Parameters.AddWithValue("$picture",Picture);
+            command.Parameters.AddWithValue("$date", carReport.Date);
+            command.Parameters.AddWithValue("$author", carReport.Author);
+            command.Parameters.AddWithValue("$maker", carReport.Maker);
+            command.Parameters.AddWithValue("$carName", carReport.CarName);
+            command.Parameters.AddWithValue("$report", carReport.Report);
+            command.Parameters.AddWithValue("$picture",carReport.Picture);
             var result = command.ExecuteScalar();
 
             if (result is null)
@@ -85,7 +94,7 @@ SELECT last_insert_rowid();
             return Convert.ToInt32((long)result);
         }
         //修正
-        public void Update(CarReport carReport)
+        public static void Update(CarReport carReport)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -94,7 +103,7 @@ SELECT last_insert_rowid();
             command.CommandText =
                 """
 UPDATE CarReports
-SET Date = $date,Autor = $author,Maker = $maker,CarName = $carName,
+SET Date = $date,Author = $author,Maker = $maker,CarName = $carName,
 Report = $report,Picture = $picture
 WHERE Id =$id;
 """;
@@ -109,7 +118,7 @@ WHERE Id =$id;
             if (command.ExecuteNonQuery() == 0)
                 throw new InvalidOperationException("修正対象が見つかりませんでした。");
         }
-        public void Delete(int id)
+        public static void Delete(int id)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -124,24 +133,6 @@ WHERE   Id =$id;
             command.ExecuteNonQuery();
         }
 
-        // ImageをSQLiteへ保存できるbyte[]へ変換する
-        private static byte[]? ImageToBytes(Image? image)
-        {
-            if (image is null) return null;
-
-            using var stream = new MemoryStream();
-            // DBへはPNG形式で保存
-            image.Save(stream, ImageFormat.Png);
-            return stream.ToArray();
-        }
-
-        // SQLiteのBLOB（byte[]）をImageへ変換する
-        private static Image BytesToImage(byte[] data)
-        {
-            using var stream = new MemoryStream(data);
-            using var image = Image.FromStream(stream);
-            // MemoryStream破棄後も利用できるようBitmapとしてコピーする。
-            return new Bitmap(image);
-        }
+        
     }
     }
