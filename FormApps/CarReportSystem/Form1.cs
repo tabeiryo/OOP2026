@@ -5,7 +5,7 @@ namespace CarReportSystem
 {
     public partial class Form1 : Form
     {
-        int ID = 0;
+        
         //カーレポート管理用リスト
         private readonly BindingList<CarReport> listCarReports = new();
         // DB操作を担当するRepository
@@ -55,16 +55,18 @@ namespace CarReportSystem
             {
                 var carReport = new CarReport
                 {
-                    Id = ID,
                     Date = dtpDate.Value.Date,
                     Author = cbAuthor.Text.Trim(),
                     Maker = GetRadioButtonMaker(),
                     CarName = cbCarName.Text.Trim(),
                     Report = tbReport.Text,
-                   // Picture = pbPicture.Image,
+                    Picture = pbPicture.Image,
                 };
-                listCarReports.Add(carReport);
-                CarReportRepository.Add(carReport);
+
+                carReport.Id = _repository.Add(carReport);
+
+                
+
 
                 ReloadProducts();
                 InputItemsAllClear(); ;
@@ -75,7 +77,7 @@ namespace CarReportSystem
             {
                 ShowError("登録エラー", ex);
             }
-            ID++;
+            
 
             //入力履歴を登録
             SetCbAuthor(cbAuthor.Text.Trim());
@@ -224,7 +226,7 @@ namespace CarReportSystem
                 tsslbMessage.Text = "削除するレポートを選択してくっださい";
                 return;
             }
-            CarReportRepository.Delete(carReport.Id);
+            _repository.Delete(carReport.Id);
             
             listCarReports.Remove(carReport);
 
@@ -240,7 +242,6 @@ namespace CarReportSystem
         }
         private void btModifyRecord_Click(object sender, EventArgs e)
         {
-
             if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport selectedCarReport)
             {
                 tsslbMessage.Text = "修正するレポートを選択してください";
@@ -252,10 +253,14 @@ namespace CarReportSystem
 
             try
             {
+                selectedCarReport.Date = dtpDate.Value.Date;
                 selectedCarReport.Author = author;
+                selectedCarReport.Maker = GetRadioButtonMaker();
                 selectedCarReport.CarName = carName;
+                selectedCarReport.Report = tbReport.Text;
+                selectedCarReport.Picture = pbPicture.Image;
 
-                CarReportRepository.Update(selectedCarReport);
+                _repository.Update(selectedCarReport);
 
                 ReloadProducts();
                 InputItemsAllClear();
@@ -267,6 +272,7 @@ namespace CarReportSystem
                 ShowError("修正エラー", ex);
             }
         }
+
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e)
         {

@@ -1,14 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing.Configuration;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace CarReportSystem
 {
@@ -33,37 +24,40 @@ ORDER   BY  Id;
             {
                 carReports.Add(new CarReport
                 {
-                    
+                    Id = reader.GetInt32(0),
                     Date = reader.GetDateTime(1),
                     Author = reader.GetString(2),
                     Maker = (CarReport.MakerGroup)reader.GetInt32(3),
                     CarName = reader.GetString(4),
                     Report = reader.GetString(5),
-                  //  Picture = ByteToImage(reader.GetByte(6))
-                   
+                    Picture = reader.IsDBNull(6)? null:ByteToImage(reader.GetFieldValue<byte[]>(6))
+
+
                 });
+
             }
             return carReports;
         }
-        int i = 0;
-        private Image ByteToImage(byte v)
-        {
-            
-                Byte[] bytes = new Byte[i];
-            bytes[i] = v;
-            using var stream = new MemoryStream(bytes[i]);
-            using var image = Image.FromStream(stream);
-            i++;
-            // MemoryStream破棄後も利用できるようBitmapとしてコピーする。
-            return new Bitmap(image);
-
-        }
         
+        private Image ByteToImage(byte[] bytes)
+        {
+            using var stream = new MemoryStream(bytes);
+            using var image = Image.FromStream(stream);
+            return new Bitmap(image);
+        }
+
+        private byte[] ImageToByte(Image image)
+        {
+            using var stream = new MemoryStream();
+            image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+            return stream.ToArray();
+        }
+
 
 
         //DateTime Date,string Author,CarReport.MakerGroup Maker,string CarName,string Report,Image Picture
         //登録
-        public static int Add(CarReport carReport)
+        public int Add(CarReport carReport)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -84,7 +78,8 @@ SELECT last_insert_rowid();
             command.Parameters.AddWithValue("$maker", carReport.Maker);
             command.Parameters.AddWithValue("$carName", carReport.CarName);
             command.Parameters.AddWithValue("$report", carReport.Report);
-            command.Parameters.AddWithValue("$picture",carReport.Picture);
+            command.Parameters.AddWithValue("$picture",carReport.Picture is null? DBNull.Value:ImageToByte(carReport.Picture));
+
             var result = command.ExecuteScalar();
 
             if (result is null)
@@ -94,7 +89,7 @@ SELECT last_insert_rowid();
             return Convert.ToInt32((long)result);
         }
         //修正
-        public static void Update(CarReport carReport)
+        public  void Update(CarReport carReport)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -112,13 +107,14 @@ WHERE Id =$id;
             command.Parameters.AddWithValue("$maker", carReport.Maker);
             command.Parameters.AddWithValue("$carName", carReport.CarName);
             command.Parameters.AddWithValue("$report", carReport.Report);
-            command.Parameters.AddWithValue("$picture", carReport.Picture);
+            command.Parameters.AddWithValue("$picture",carReport.Picture is null? DBNull.Value:ImageToByte(carReport.Picture));
+
             command.Parameters.AddWithValue("$id", carReport.Id);
 
             if (command.ExecuteNonQuery() == 0)
                 throw new InvalidOperationException("修正対象が見つかりませんでした。");
         }
-        public static void Delete(int id)
+        public  void Delete(int id)
         {
             using var connection = Database.GetConnection();
             connection.Open();
