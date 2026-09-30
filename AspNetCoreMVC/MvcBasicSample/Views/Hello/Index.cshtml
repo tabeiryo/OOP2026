@@ -14,11 +14,8 @@
 <ul>
     @foreach (var i in Model)
     {
-        <li>@i.Name @i.Price    円</li>
-        sum+=i.Price
+        <li>@i.Name @i.Price 円</li>
+        sum += i.Price;
     }
-
 </ul>
 <p>合計　@sum　円</p>
-
-
