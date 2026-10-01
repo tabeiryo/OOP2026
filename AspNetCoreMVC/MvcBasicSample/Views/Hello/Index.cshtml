@@ -6,16 +6,22 @@
 
 @{
     ViewData["Title"] = "商品情報";
-    string name = "田中";
+    string ProductName = "ノート";
+    int Price = 250;
     int sum = 0;
 
 }
 <h1> 商品情報 </h1>
-<ul>
-    @foreach (var i in Model)
-    {
+<p>商品名：@ProductName</p>
+<p>価格：@Price 円</p>
+
+
+
+@*<ul>
+        @foreach (var i in Model)
+   {
         <li>@i.Name @i.Price 円</li>
         sum += i.Price;
     }
 </ul>
-<p>合計　@sum　円</p>
+<p>合計　@sum　円</p>*@
