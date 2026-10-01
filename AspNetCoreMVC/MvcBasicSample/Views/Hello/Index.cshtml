@@ -3,23 +3,17 @@
 *@
 
 @model List<MvcBasicSample.Models.Product>
-
 @{
-    ViewData["Title"] = "商品一覧";
+    ViewData["Title"] = "送料判定";
+    int total = 1200;
 }
-<h1> 商品一覧 </h1>
-
-@if (Model.Count == 0)
+<h1>送料判定</h1>
+<p>合計：@total 円</p>
+@if (total >= 1000)
 {
-    <p> 商品はありません</p>
+    <p>送料無料</p>
 }
 else
 {
-<p>@Model.Count 件の商品があります。</p>    
-    <ul>
-        @foreach (var i in Model)
-        {
-            <li>@i.Name @i.Price 円</li>
-        }
-    </ul>
+    <p>送料がかかります</p>
 }
