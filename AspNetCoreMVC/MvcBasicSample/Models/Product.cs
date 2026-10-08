@@ -1,16 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MvcBasicSample.Models
-{
-    public class Product
-    {//商品の情報
+namespace MvcBasicSample.Models;
 
-        public int Id { get; set; }
+public class Product {
+    public int Id { get; set; } //主キー
 
-        [Required]
-        public string Name { get; set; } = string.Empty;
-
-
-        public int Price { get; set; }
-    }
+    [Required]  //必須項目
+    public string Name { get; set; } = string.Empty;
+    public int Price { get; set; } // 円単位の価格
 }

@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MvcBasicSample.Models;
 
-namespace MvcBasicSample.Data
-{
-    public class AppDBContext : DbContext
-    {
-        public AppDBContext(DbContextOptions<AppDBContext> options)
-            : base(options) { }
+namespace MvcBasicSample.Data;
 
+public class AppDbContext : DbContext{
 
-        public DbSet<Product> Products => Set<Product>();
+    // Program.cs で登録した接続設定を受け取る
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options) {   // 受け取った設定を親クラスへ渡す
     }
+
+    // Products テーブルをProduct 型として問い合わせるためのプロパティ
+    public DbSet<Product> Products => Set<Product>();
 }
+
