@@ -6,14 +6,14 @@ namespace Section03 {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private async void button1_Click(object sender, EventArgs e) {
             //Thread.Sleep(5000);
             //MessageBox.Show("Š®—¹");
 
             //await Task.Delay(5000);
             //MessageBox.Show("Š®—¹");
 
-            var elapsed = DoLongTimeWork(5000);
+            var elapsed = await DoLongTimeWork(5000);
             MessageBox.Show(elapsed + "ƒ~ƒŠ•b");
 
         }
@@ -25,11 +25,11 @@ namespace Section03 {
         }
 
         //–ß‚è’l‚ ‚è
-        private long DoLongTimeWork(int milliseconds) {
+        private async Task<long> DoLongTimeWork(int milliseconds) {
             var sw = Stopwatch.StartNew();
-
-            Thread.Sleep(milliseconds);
-
+            await Task.Run(() => {
+                Thread.Sleep(milliseconds);
+            });
             sw.Stop();
             return sw.ElapsedMilliseconds;
         }
