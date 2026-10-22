@@ -20,15 +20,15 @@ public abstract class TextProcessor {
         Terminate();
     }
 
-    private void Initialize(string fname)
+    protected virtual void Initialize(string fname)
     {
     }
 
-    private void Execute(string line)
+    protected virtual void Execute(string line)
     {
     }
 
-    private void Terminate()
+    protected virtual void Terminate()
     {
     }
 }

@@ -191,6 +191,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextProcessor", "Chapter15\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineCounter", "Chapter15\Template Method\LineCounter\LineCounter.csproj", "{1F87BED5-DA3F-4020-B854-9EA99A4A5CA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProgram", "Chapter15\Template Method\FileProgram\FileProgram.csproj", "{504DCD64-BD10-48F0-AB9E-28ECA7D69869}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextProcessor", "Chapter15\Template Method\TextProcessor\TextProcessor.csproj", "{DBF5AF12-E74E-B152-ED96-4B726E4FE816}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -401,6 +405,14 @@ Global
 		{1F87BED5-DA3F-4020-B854-9EA99A4A5CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F87BED5-DA3F-4020-B854-9EA99A4A5CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F87BED5-DA3F-4020-B854-9EA99A4A5CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504DCD64-BD10-48F0-AB9E-28ECA7D69869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504DCD64-BD10-48F0-AB9E-28ECA7D69869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504DCD64-BD10-48F0-AB9E-28ECA7D69869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504DCD64-BD10-48F0-AB9E-28ECA7D69869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBF5AF12-E74E-B152-ED96-4B726E4FE816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBF5AF12-E74E-B152-ED96-4B726E4FE816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBF5AF12-E74E-B152-ED96-4B726E4FE816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBF5AF12-E74E-B152-ED96-4B726E4FE816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -477,6 +489,8 @@ Global
 		{D52738B2-7221-494B-9E2A-AD3091ABB3BE} = {F9D5CDC5-2169-4136-8530-E765A470A357}
 		{5F99FDD7-A13B-4F22-BD9F-38C98F38976E} = {D52738B2-7221-494B-9E2A-AD3091ABB3BE}
 		{1F87BED5-DA3F-4020-B854-9EA99A4A5CA4} = {D52738B2-7221-494B-9E2A-AD3091ABB3BE}
+		{504DCD64-BD10-48F0-AB9E-28ECA7D69869} = {D52738B2-7221-494B-9E2A-AD3091ABB3BE}
+		{DBF5AF12-E74E-B152-ED96-4B726E4FE816} = {D52738B2-7221-494B-9E2A-AD3091ABB3BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43EB0410-663A-4508-A050-B7D97B488933}
