@@ -14,6 +14,8 @@ public static class ConverterFactory
         new FeetConverter(),
         new YardConverter(),
         new InchConverter(),
+        new MileConverter(),
+        new KiloConverter(),
         ];
 
     public static ConverterBase? GetInstance(string name) => _converters.FirstOrDefault(x => x.isMyUnit(name));
