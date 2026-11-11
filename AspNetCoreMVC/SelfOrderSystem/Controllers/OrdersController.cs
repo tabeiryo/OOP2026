@@ -12,11 +12,14 @@ public class OrdersController : Controller
 {
     private readonly AppDbContext _db;      // 商品と注文のDB操作 
     private readonly CartService _cart;    // Session内のカート操作 
+    private readonly IOrderService _orderService; // 注文の検証と保存を担当するService 
 
-    public OrdersController(AppDbContext db, CartService cart)
+    public OrdersController(AppDbContext db, CartService cart,
+                            IOrderService orderService)
     {
-        _db = db;
-        _cart = cart;
+        _db = db;                              // 既存のDB参照用 
+        _cart = cart;                          // 既存のSession用 
+        _orderService = orderService;          // DIから受け取ったService 
     }
 
     [HttpGet]
@@ -30,63 +33,31 @@ public class OrdersController : Controller
 
         return View(new CheckoutViewModel { Items = items });
     }
-    [HttpPost]
-    [ValidateAntiForgeryToken]
+    [HttpPost]                                 // POSTで注文を受け取る 
+    [ValidateAntiForgeryToken]                 // 不正なフォーム送信を検証 
     public async Task<IActionResult> Place(CheckoutViewModel model)
     {
-        var cartItems = _cart.GetItems(); // Sessionを再取得 
-        if (cartItems.Count == 0)
-            ModelState.AddModelError("", "カートが空です");
-
-        var ids = cartItems.Select(x => x.ProductId).Distinct().ToList();
-        var products = await _db.Products.AsNoTracking()
-            .Where(p => ids.Contains(p.Id) && p.IsActive)
-            .ToDictionaryAsync(p => p.Id); // 現在のDBから商品情報を取得 
-
-        foreach (var item in cartItems)
+        var cartItems = _cart.GetItems();      // Session内のカートを取得 
+        if (!ModelState.IsValid)               // テーブル番号などが不正 
         {
-            if (!products.TryGetValue(item.ProductId, out var product))
-            {
-                ModelState.AddModelError("", "注文できない商品があります");
-                continue;
-            }
-            if (product.IsSoldOut)
-                ModelState.AddModelError("", $"{product.Name}は売り切れです");
-            if (item.Quantity < 1 || item.Quantity > 99)
-                ModelState.AddModelError("", "数量は1～99にしてください");
-            if (product.Price != item.UnitPrice)
-                ModelState.AddModelError("", $"{product.Name}の価格が変更されました");
-        }
-
-        if (!ModelState.IsValid)
-        {
-            model.Items = cartItems;     // 再表示用の一覧を戻す 
+            model.Items = cartItems;          // 画面再表示のため戻す 
             return View("Checkout", model);
         }
 
-        var order = new Order
+        var result = await _orderService.PlaceAsync(
+            cartItems, model.TableNumber);     // 注文処理をServiceへ依頼 
+
+        if (!result.IsSuccess)                 // 保存できない場合 
         {
-            PublicId = Guid.NewGuid(),
-            TableNumber = model.TableNumber,
-            OrderedAtUtc = DateTimeOffset.UtcNow,
-            Status = OrderStatus.New
-        };
-        foreach (var item in cartItems)
-        {
-            var product = products[item.ProductId];
-            order.Items.Add(new OrderItem
-            {
-                ProductId = product.Id,
-                Quantity = item.Quantity,
-                UnitPrice = product.Price // 注文確定時のDB価格を保存 
-            });
+            foreach (var error in result.Errors)
+                ModelState.AddModelError("", error); // エラーを画面へ 
+            model.Items = cartItems;
+            return View("Checkout", model);
         }
 
-        _db.Orders.Add(order);           // 注文と明細を登録対象にする 
-        await _db.SaveChangesAsync();   // DB保存の完了を待つ 
-        _cart.Clear();                  // 保存成功後にカートを空にする 
+        _cart.Clear();                         // 保存成功後だけカートを消す 
         return RedirectToAction(nameof(Complete),
-            new { id = order.PublicId });
+            new { id = result.PublicId });     // 完了画面へ移動 
     }
     [HttpGet]
     public async Task<IActionResult> Complete(Guid id)
