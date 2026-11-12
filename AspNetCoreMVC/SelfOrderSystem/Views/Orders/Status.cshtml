@@ -8,8 +8,7 @@
 <div class="alert alert-dark fs-4 fw-bold">
     現在：@Model.Status.ToJapanese()
 </div>
-@foreach (var item in Model.Items)
-{
+@foreach (var item in Model.Items) {
     <div class="d-flex justify-content-between border-bottom py-2">
         <span>@item.Product?.Name × @item.Quantity</span>
         <span>@item.LineTotal.ToString("N0") 円</span>

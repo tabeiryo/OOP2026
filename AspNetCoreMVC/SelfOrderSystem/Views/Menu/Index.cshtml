@@ -33,15 +33,13 @@
     @foreach (var product in Model.Products) {
         <div class="col-12 col-md-6 col-xl-4">
             <div class="card h-100 shadow-sm">
-                @if (!string.IsNullOrWhiteSpace(product.ImagePath))
-                {
+
+                @if (!string.IsNullOrWhiteSpace(product.ImagePath)) {
                     <img src="@Url.Content(product.ImagePath)"
                          class="so-product-photo"
                          alt="@product.Name"
                          loading="lazy" />
-                }
-                else
-                {
+                } else {
                     <div class="so-product-photo so-product-photo--empty">
                         写真準備中
                     </div>

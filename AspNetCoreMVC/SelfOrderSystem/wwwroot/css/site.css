@@ -1,22 +1,282 @@
+:root {
+    --red: #ff002b;
+    --blood: #a00020;
+    --purple: #a000ff;
+    --gold: #ffd000;
+    --cyan: #00f6ff;
+    --pink: #ff00c8;
+    --black: #030005;
+}
+
+/* ================= BASE ================= */
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    background: #030005;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 18px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    color: white;
+    font-weight: 900;
+    background: radial-gradient(ellipse at 50% 40%, rgba(255,0,30,.22), transparent 45%), radial-gradient(ellipse at 0% 0%, rgba(160,0,255,.2), transparent 50%), radial-gradient(ellipse at 100% 100%, rgba(255,0,120,.2), transparent 50%), linear-gradient( 135deg, #030005, #25000c, #080014, #030005 );
+    background-size: 200% 200%;
+    animation: bgMove 8s ease infinite;
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* ================= HEADINGS ================= */
+
+h1, h2, h3 {
+    color: white;
+    font-weight: 1000;
+    letter-spacing: 3px;
+    text-shadow: 0 0 3px white, 0 0 10px red, 0 0 25px #ff003c, 0 0 50px #ff00aa, 0 0 90px #8500ff;
+    animation: titleAura 1.2s infinite alternate;
+}
+
+@keyframes titleAura {
+    from {
+        filter: brightness(1);
+        text-shadow: 0 0 5px white, 0 0 20px red, 0 0 40px #ff003c;
+    }
+
+    to {
+        filter: brightness(1.8);
+        text-shadow: 0 0 10px white, 0 0 30px #ffcc00, 0 0 60px #ff00aa, 0 0 100px #8500ff;
+    }
+}
+
+/* ================= BUTTON ================= */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    color: white !important;
+    font-weight: 1000;
+    letter-spacing: 3px;
+    border: 2px solid white !important;
+    border-radius: 8px !important;
+    background: linear-gradient( 135deg, #ff003c, #790016, #ff00aa, #5000a8 ) !important;
+    background-size: 300% 300% !important;
+    box-shadow: 0 0 5px white, 0 0 15px red, 0 0 30px #ff003c, 0 0 60px #ff00aa, inset 0 0 20px rgba(255,255,255,.3);
+    animation: buttonRainbow 2s linear infinite, buttonPulse 1s ease-in-out infinite alternate;
+    transition: .2s;
+}
+
+@keyframes buttonRainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+@keyframes buttonPulse {
+    from {
+        filter: brightness(1);
+    }
+
+    to {
+        filter: brightness(1.5);
+    }
+}
+
+.btn:hover {
+    color: white !important;
+    transform: scale(1.08);
+    border-color: #fff !important;
+    box-shadow: 0 0 10px white, 0 0 30px #ff003c, 0 0 60px #ffcc00, 0 0 100px #ff00aa, 0 0 130px #8500ff;
+}
+
+.btn:active {
+    transform: scale(.94);
+}
+
+/* ================= CARD ================= */
+
+.card {
+    color: white;
+    background: linear-gradient( 145deg, rgba(45,0,12,.98), rgba(8,0,18,.98) );
+    border: 2px solid #ff003c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff003c, 0 0 25px rgba(255,0,170,.7), 0 0 50px rgba(100,0,255,.4), inset 0 0 25px rgba(255,0,60,.2);
+    animation: cardGlow 2s infinite alternate;
+}
+
+@keyframes cardGlow {
+    from {
+        box-shadow: 0 0 10px red, 0 0 20px #ff003c;
+    }
+
+    to {
+        box-shadow: 0 0 15px white, 0 0 35px #ff003c, 0 0 60px #8500ff;
+    }
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.015);
+    border-color: var(--gold);
+    box-shadow: 0 0 15px white, 0 0 35px #ff003c, 0 0 70px #ffcc00, 0 0 100px #8500ff;
+}
+
+/* ================= INPUT ================= */
+
+.form-control,
+.form-select {
+    color: white !important;
+    background: #08000d !important;
+    border: 2px solid #ff003c !important;
+    border-radius: 5px !important;
+    box-shadow: 0 0 10px rgba(255,0,60,.5), inset 0 0 10px rgba(255,0,60,.2);
+}
+
+    .form-control::placeholder {
+        color: #ff7799;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        color: white !important;
+        background: #18000d !important;
+        border-color: #ffcc00 !important;
+        box-shadow: 0 0 0 3px rgba(255,0,60,.3), 0 0 15px white, 0 0 35px #ff003c, 0 0 65px #ff00aa !important;
+    }
+
+/* ================= LINKS ================= */
+
+a {
+    color: #ffcc00;
+    text-shadow: 0 0 10px red, 0 0 20px #ff003c;
+    transition: .2s;
+}
+
+    a:hover {
+        color: white;
+        text-shadow: 0 0 10px white, 0 0 25px #ffcc00, 0 0 50px #ff003c;
+    }
+
+/* ================= TABLE ================= */
+
+.table {
+    color: white;
+    border-color: #ff003c;
+    background: rgba(15,0,15,.7);
+}
+
+    .table thead {
+        color: #ffd000;
+        background: #40000d;
+        text-shadow: 0 0 15px #ff003c;
+    }
+
+    .table tbody tr:hover {
+        background: rgba(255,0,60,.3);
+    }
+
+/* ================= CHECKBOX ================= */
+
+.form-check-input {
+    background-color: #18000d;
+    border: 2px solid #ff003c;
+}
+
+    .form-check-input:checked {
+        background-color: #ff003c;
+        border-color: #ffcc00;
+        box-shadow: 0 0 10px red, 0 0 25px #ffcc00;
+    }
+
+    /* ================= FOCUS ================= */
+
+    .btn:focus,
+    .btn:active:focus,
+    .btn-link.nav-link:focus,
+    .form-control:focus,
+    .form-check-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px white, 0 0 0 6px #ff003c, 0 0 25px #ffcc00, 0 0 50px #ff00aa;
+    }
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #030005;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient( #ff003c, #ff00aa, #8500ff, #00eaff, #ffcc00 );
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff003c;
+}
+
+/* ================= SELECTION ================= */
+
+::selection {
+    color: black;
+    background: #ffd000;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 767px) {
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* 商品写真を一定の高さで表示 */
+.so-product-photo {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: #f0eee9;
+}
+/* 写真の登録がない商品に表示 */
+.so-product-photo--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.95rem;
 }

@@ -1,11 +1,7 @@
 ﻿namespace SelfOrderSystem.Models;
-
-public static class OrderStatusExtensions
-{
-    public static string ToJapanese(this OrderStatus status)
-    {
-        return status switch
-        {
+public static class OrderStatusExtensions {
+    public static string ToJapanese(this OrderStatus status) {
+        return status switch {
             OrderStatus.New => "新規注文",
             OrderStatus.Accepted => "受付済み",
             OrderStatus.Cooking => "調理中",
@@ -13,10 +9,9 @@ public static class OrderStatusExtensions
             _ => "不明"
         };
     }
-    public static string NextActionLabel(this OrderStatus status)
-    {
-        return status switch
-        {
+
+    public static string NextActionLabel(this OrderStatus status) {
+        return status switch {
             OrderStatus.New => "受付する",
             OrderStatus.Accepted => "調理開始",
             OrderStatus.Cooking => "提供完了",
